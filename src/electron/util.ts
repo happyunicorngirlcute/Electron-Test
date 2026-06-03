@@ -1,4 +1,4 @@
-import { ipcMain } from "electron";
+import { ipcMain, WebContents } from "electron";
 import { getStaticData } from "./resourceManager.js";
 
 export function isDev(): boolean {
@@ -10,4 +10,12 @@ export function ipcHandle<Key extends keyof EventPayloadMapping>(
   handler: () => any,
 ) {
   ipcMain.handle(key, () => handler());
+}
+
+export function ipcWebContentsSend<Key extends keyof EventPayloadMapping>(
+  key: Key,
+  webContents: WebContents,
+  payload: EventPayloadMapping[Key]
+) {
+  webContents.send(key, payload);
 }
