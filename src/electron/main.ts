@@ -20,7 +20,13 @@ app.on("ready", () => {
 
   pollResources(mainWindow);
 
+handleGetStaticData(() => {
+  return getStaticData();
+});
+
+function handleGetStaticData(callback: () => StaticData) {
   ipcMain.handle("getStaticData", () => {
-    return getStaticData();
+    return callback();
   });
+}
 });
