@@ -7,9 +7,11 @@ import './App.css'
 function App() {
   const [count, setCount] = useState(0)
 
-  window.electron.getStaticData();
+  window.electron.subscribeStatistics((stats) => {
+    console.log(stats);
+  });
 
-  
+
   return (
     <>
       <section id="center">
