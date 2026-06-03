@@ -15,7 +15,7 @@ type StaticData = {
 
 type EventPayloadMapping = {
   statistics: Statistics;
-  staticData: StaticData;
+  getStaticData: StaticData;
 };
 
 interface Window {
