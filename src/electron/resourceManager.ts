@@ -1,13 +1,16 @@
-import osUtils from 'os-utils';
+import osUtils from "os-utils";
 
 const POLLING_INTERVAL = 500;
 
 export function pollResources() {
-  setInterval(() => {
-    getCpuUsage();
+  setInterval(async () => {
+    const cpuUsage = await getCpuUsage();
+    console.log(cpuUsage);
   }, POLLING_INTERVAL);
 }
 
 function getCpuUsage() {
-  osUtils.cpuUsage((percentage) => console.log(percentage));
+  return new Promise((resolve) => {
+    osUtils.cpuUsage(resolve);
+  });
 }
