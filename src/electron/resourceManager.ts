@@ -7,6 +7,7 @@ export function pollResources() {
   setInterval(async () => {
     const cpuUsage = await getCpuUsage();
     const ramUsage = getRamUsage();
+    const storageData = getStorageData();
     console.log({ cpuUsage, ramUsage });
   }, POLLING_INTERVAL);
 }
@@ -22,7 +23,7 @@ function getRamUsage() {
 }
 
 function getStorageData() {
-  
+
   const stats = fs.statfsSync(process.platform === 'win32' ? 'C://' : '/');
   const total = stats.bsize * stats.blocks;
   const free = stats.bsize * stats.bfree;
