@@ -18,7 +18,7 @@ export function ipcMainHandle<Key extends keyof EventPayloadMapping>(
 
 function validateEventFrame(frame: Electron.WebFrameMain | null) {
   if (!frame) throw new Error('No sender frame');
-  if (isDev() && new URL(frame.url).host === 'localhost:5124') return;
+  if (isDev() && new URL(frame.url).host === 'localhost:5123') return;
   if (frame.url !== pathToFileURL(getUIPath()).toString()) {
     throw new Error('Invalid sender origin');
   }
