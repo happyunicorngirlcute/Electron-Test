@@ -15,11 +15,7 @@ const EMPTY_MESSAGES: Record<TaskStatus, string> = {
   'done': 'No completed tasks',
 };
 
-const EMPTY_ICONS: Record<TaskStatus, string> = {
-  'backlog': '📋',
-  'in-progress': '⚡',
-  'done': '✅',
-};
+
 
 export function TaskColumn({ status, tasks, onDelete }: TaskColumnProps) {
   return (
@@ -35,7 +31,7 @@ export function TaskColumn({ status, tasks, onDelete }: TaskColumnProps) {
       <div className="task-column-body">
         {tasks.length === 0 ? (
           <div className="task-column-empty">
-            <span className="task-column-empty-icon">{EMPTY_ICONS[status]}</span>
+            <span className="task-column-empty-icon">{EMPTY_MESSAGES[status]}</span>
             {EMPTY_MESSAGES[status]}
           </div>
         ) : (
