@@ -1,5 +1,5 @@
 {
-  "appId": "com.github.happyunicorngirlcute.appname",
+  "appId": "com.taskmanager.app",
   "files": ["dist-electron", "dist-react"],
   "extraResources": ["dist-electron/preload.cjs"],
   "mac": {
@@ -10,7 +10,10 @@
     "category": "Utility"
   },
   "win": {
-    "target": ["portable", "msi"],
+    "target": ["portable"],
     "icon": "build/icon.ico"
+  },
+  "portable": {
+    "artifactName": "TaskManager-${version}.exe"
   }
 }
