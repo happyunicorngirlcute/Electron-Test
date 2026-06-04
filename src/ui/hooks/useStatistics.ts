@@ -11,7 +11,7 @@ export function useStatistics() {
   useEffect(() => {
     if (!window.electron?.subscribeStatistics) return;
 
-    const unsub = window.electron.subscribeStatistics((_stats) => {
+    const unsub = window.electron.subscribeStatistics(() => {
       // Placeholder: data received but not rendered
     });
 
