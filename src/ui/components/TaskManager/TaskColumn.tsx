@@ -15,8 +15,6 @@ const EMPTY_MESSAGES: Record<TaskStatus, string> = {
   'done': 'No completed tasks',
 };
 
-
-
 export function TaskColumn({ status, tasks, onDelete }: TaskColumnProps) {
   return (
     <div className="task-column">
@@ -31,7 +29,6 @@ export function TaskColumn({ status, tasks, onDelete }: TaskColumnProps) {
       <div className="task-column-body">
         {tasks.length === 0 ? (
           <div className="task-column-empty">
-            <span className="task-column-empty-icon">{EMPTY_MESSAGES[status]}</span>
             {EMPTY_MESSAGES[status]}
           </div>
         ) : (

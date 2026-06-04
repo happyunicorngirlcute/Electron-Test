@@ -1,7 +1,6 @@
 .app-layout {
   display: flex;
   height: 100vh;
-  padding-top: 0;
 }
 
 .app-main {
@@ -10,7 +9,7 @@
   flex-direction: column;
   overflow: hidden;
   margin-left: 280px;
-  padding-top: 104px;
+  padding-top: 84px;
   min-height: 0;
 }
 

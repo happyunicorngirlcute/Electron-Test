@@ -7,4 +7,9 @@ electron.contextBridge.exposeInMainWorld("electron", {
     return () => electron.ipcRenderer.removeListener("statistics", handler);
   },
   getStaticData: () => electron.ipcRenderer.invoke("getStaticData"),
-} satisfies Window["electron"]);
+  windowControls: {
+    minimize: () => electron.ipcRenderer.send("window:minimize"),
+    maximize: () => electron.ipcRenderer.send("window:maximize"),
+    close: () => electron.ipcRenderer.send("window:close"),
+  },
+});

@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from 'react';
-import { AnnouncementBar } from './AnnouncementBar';
 import './Header.css';
 
 export function Header() {
@@ -45,11 +44,9 @@ export function Header() {
       data-scrolled={scrolled}
       data-hidden={hidden}
     >
-      <AnnouncementBar />
       <div className="nav-inner">
         <a href="/" className="nav-logo" aria-label="Home">
-          <span className="nav-logo-icon">T</span>
-          Task Manager
+          Tasks
         </a>
 
         <nav className="nav-links" role="navigation">
@@ -58,7 +55,7 @@ export function Header() {
             onMouseEnter={() => setOpenMenu('tasks')}
             onMouseLeave={() => setOpenMenu(null)}
           >
-            <button className="nav-trigger">Tasks</button>
+            <button className="nav-trigger">Boards</button>
             <div className="mega-menu" role="dialog" aria-hidden={openMenu !== 'tasks'}>
               <div className="mega-menu-grid">
                 <a className="mega-item" href="#all-tasks">
@@ -67,7 +64,7 @@ export function Header() {
                 </a>
                 <a className="mega-item" href="#kanban">
                   <span className="mega-category">Kanban Board</span>
-                  <span className="mega-desc">Drag-and-drop columns for visual workflow</span>
+                  <span className="mega-desc">Organize work across backlog, in-progress, and done columns</span>
                 </a>
                 <a className="mega-item" href="#calendar">
                   <span className="mega-category">Calendar</span>
@@ -82,20 +79,20 @@ export function Header() {
             onMouseEnter={() => setOpenMenu('stats')}
             onMouseLeave={() => setOpenMenu(null)}
           >
-            <button className="nav-trigger">Stats</button>
+            <button className="nav-trigger">System</button>
             <div className="mega-menu" role="dialog" aria-hidden={openMenu !== 'stats'}>
               <div className="mega-menu-grid">
                 <a className="mega-item" href="#cpu">
                   <span className="mega-category">CPU</span>
-                  <span className="mega-desc">CPU usage and process monitoring — placeholder</span>
+                  <span className="mega-desc">Processor utilization and workload distribution</span>
                 </a>
                 <a className="mega-item" href="#memory">
                   <span className="mega-category">Memory</span>
-                  <span className="mega-desc">RAM usage and memory allocation — placeholder</span>
+                  <span className="mega-desc">RAM consumption and allocation details</span>
                 </a>
                 <a className="mega-item" href="#storage">
                   <span className="mega-category">Storage</span>
-                  <span className="mega-desc">Disk usage and storage analytics — placeholder</span>
+                  <span className="mega-desc">Disk usage and available capacity</span>
                 </a>
               </div>
             </div>
@@ -103,11 +100,6 @@ export function Header() {
 
           <a className="nav-link" href="#settings">Settings</a>
         </nav>
-
-        <div className="nav-ctas">
-          <button className="nav-cta nav-cta--ghost">Log in</button>
-          <button className="nav-cta nav-cta--primary">Sign up</button>
-        </div>
       </div>
     </header>
   );

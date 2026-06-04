@@ -1,5 +1,4 @@
 import { ipcMain, WebContents } from "electron";
-import { getStaticData } from "./resourceManager.js";
 import { getUIPath } from "./pathResolver.js";
 import { pathToFileURL } from "url";
 export function isDev(): boolean {
