@@ -9,7 +9,10 @@ export function ipcMainHandle<Key extends keyof EventPayloadMapping>(
   key: Key,
   handler: () => any,
 ) {
-  ipcMain.handle(key, (event) => handler());
+  ipcMain.handle(key, (event) => {
+    event.senderFrame
+    handler();
+  });
 }
 
 export function ipcWebContentsSend<Key extends keyof EventPayloadMapping>(
