@@ -3,6 +3,9 @@ import { ipcMainHandle, isDev } from "./util.js";
 import { pollResources } from "./resourceManager.js";
 import { getPreloadPath, getUIPath } from "./pathResolver.js";
 import { getStaticData } from "./resourceManager.js";
+import { createTray } from "./tray.js";
+
+let forceQuit = false;
 
 app.on("ready", () => {
   const mainWindow = new BrowserWindow({
@@ -18,6 +21,18 @@ app.on("ready", () => {
   } else {
     mainWindow.loadFile(getUIPath());
   }
+
+  createTray(mainWindow, () => {
+    forceQuit = true;
+    app.quit();
+  });
+
+  mainWindow.on("close", (event) => {
+    if (!forceQuit) {
+      event.preventDefault();
+      mainWindow.hide();
+    }
+  });
 
   pollResources(mainWindow);
 
@@ -40,4 +55,10 @@ app.on("ready", () => {
   ipcMain.on("window:close", () => {
     mainWindow.close();
   });
+});
+
+app.on("window-all-closed", () => {
+  if (forceQuit) {
+    app.quit();
+  }
 });

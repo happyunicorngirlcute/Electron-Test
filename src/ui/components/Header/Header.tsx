@@ -98,7 +98,6 @@ export function Header() {
             </div>
           </div>
 
-          <a className="nav-link" href="#settings">Settings</a>
         </nav>
       </div>
     </header>
